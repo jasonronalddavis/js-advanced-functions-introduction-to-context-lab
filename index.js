@@ -23,7 +23,7 @@ function createEmployeeRecords(recordArray){
 
 function findEmployeeByFirstName(employeeRecords, name){
     return employeeRecords.find(function(employee){
-        return employee.firstName == name
+        return employee.firstName === name
     })
 }
 
@@ -45,10 +45,10 @@ function createTimeOutEvent(employeeRecord, timeStamp){
 
 function hoursWorkedOnDate(employeeRecord, workRecord){
     let timeIn = employeeRecord.timeInEvents.find(function(record){
-        return record.date = workRecord
+        return record.date === workRecord
     })
     let timeOut = employeeRecord.timeOutEvents.find(function(record){
-        return record.date = workRecord
+        return record.date === workRecord
     })
     let hoursWorked =  (timeOut.hour - timeIn.hour) / 100
     return hoursWorked
