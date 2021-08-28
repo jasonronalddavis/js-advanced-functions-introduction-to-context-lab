@@ -31,7 +31,7 @@ function createTimeInEvent(employeeRecord, timeStamp){
     let date = timeStamp.split(' ');
     employeeRecord.timeInEvents.push({type: 'TimeIn', hour: parseInt(date[1]),
     date: date[0] });
-
+    debugger;
     return employeeRecord
 }
 
@@ -61,19 +61,21 @@ function wagesEarnedOnDate(employeeRecord, workRecord){
 
 function allWagesFor(employeeRecord){
     let dates = employeeRecord.timeInEvents.map(function(record){
+        
         return record.date
+        
     })
-
+console.log(dates)
     let wages = dates.reduce(function(totalWages, date){
+        
         return totalWages + wagesEarnedOnDate(employeeRecord, date)
     }, 0)
 
     return wages
 }
+
 function calculatePayroll(employeeRecords){
     return employeeRecords.reduce(function(totalWorked, employeeRecord){
         return totalWorked + allWagesFor(employeeRecord)}, 0)
 }
-
-
 
